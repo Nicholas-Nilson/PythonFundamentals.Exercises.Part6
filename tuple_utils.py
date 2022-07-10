@@ -14,6 +14,11 @@ def tic_tac_toe_finish(board: TicTacToeBoard, pos_x: int, pos_y: int, symbol: st
     :param symbol: The symbol that should be placed in the column (X, or O)
     :return: None
     """
+    #how to find winning position?  create a tuple for each series of winning indexes
+    # on the board > 8 in total. if XX or OO appears & the opposite character does not, return the empty index?
+    #what would be the best way to store the empty index? could iterate through list.. 1 2 3 1 2 3 and store the empty slot? ie. X, X, _, 2)
+    #hmmmmmm
+
     board[pos_x][pos_y] = symbol
 
     pass  # remove pass statement and implement me
@@ -43,8 +48,9 @@ def print_indexes_and_entries(indexes: Iterable, entries: Iterable) -> None:
     :param entries: A list or tuple
     :return: None
     """
-    pass  # remove pass statement and implement me
-
+    # find out why map didn't work for this as well
+    for index, entry in zip(indexes, entries):
+        print(f'Index: {index:<10} Entry: {entry}')
 
 def print_items_with_index(items: Iterable):
     """
@@ -55,5 +61,7 @@ def print_items_with_index(items: Iterable):
     :param items: A tuple or a list
     :return: None
     """
-    pass  # remove pass statement and implement me
-
+    count = 1
+    for item in items:
+        print(f'{count}: {item}')
+        count += 1
