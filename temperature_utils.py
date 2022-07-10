@@ -8,7 +8,8 @@ def convert_to_celsius(fahrenheit_temp: float) -> float:
     :param fahrenheit_temp: A float representing a temperature in fahrenheit
     :return: A float representing the corresponding value of the fahrenheit_temp parameter in celsius
     """
-    pass  # remove pass statement and implement me
+    celsius_temp = (fahrenheit_temp - 32) / 1.80
+    return round(celsius_temp, 2)
 
 
 def convert_to_fahrenheit(celsius_temp: float) -> int:
@@ -18,17 +19,37 @@ def convert_to_fahrenheit(celsius_temp: float) -> int:
     :param celsius_temp: A float representing a temperature in celsius
     :return:  A float representing the corresponding value of the celsius_temp parameter in fahrenheit
     """
-    pass  # remove pass statement and implement me
+    fahrenheit_temp = celsius_temp * 1.80 + 32
+    return round(fahrenheit_temp)
 
 
 def temperature_tuple(temperatures: Iterable, input_unit_of_measurement: str) -> Tuple[Tuple[float, float]]:
     """
     Given a tuple or a list of temperatures, this function returns a tuple of tuples.
-    Each tuple contains two values. The first is the value of the temperatures parameter. The second is the the value of
+    Each tuple contains two values. The first is the value of the temperatures parameter. The second is the value of
     the first converted to the unit of measurement specified in the input_unit_of_measurement parameter.
 
-    :param temperatures: An iterable containing temperatures
+    :param temperatures: An iterable containing temperatures [temp,
     :param input_unit_of_measurement: The unit a measure to use to convert the values in the temperatures parameter
     :return: A tuple of tuples
     """
-    pass  # remove pass statement and implement me
+    converted_temp = []
+    for temp in temperatures:
+        if input_unit_of_measurement == 'c':
+            converted = (temp, convert_to_fahrenheit(temp))
+            converted_temp.append(converted)
+        elif input_unit_of_measurement == 'f':
+            converted = (temp, convert_to_celsius(temp))
+            converted_temp.append(converted)
+        elif input_unit_of_measurement == 'a':
+            converted = ()
+    return tuple(converted_temp)
+    # if input_unit_of_measurement == 'c':
+    #     for temp in temperatures:
+    #         converted_temp.append(temp, convert_to_fahrenheit(temp))
+    # elif input_unit_of_measurement == 'f':
+    #     for temp in temperatures:
+    #         converted_temp.append(temp, convert_to_fahrenheit(temp))
+    # converted_tuple = tuple(converted_temp)
+    # zipped = zip(temperatures, converted_tuple)
+    # return tuple(converted_temp)
